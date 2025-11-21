@@ -1,0 +1,541 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Aurora's Blog | Aurora's Blog</title><meta name="author" content="Aurora-tl"><meta name="copyright" content="Aurora-tl"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Linux常用命令总结 🐧 常用 Linux 命令速查表  📁 一、文件与目录操作   命令 功能说明    ls 列出目录内容 ls -la：显示隐藏文件和详细信息   cd 切换目录 cd .. 返回上一级，cd ~ 回家目录   pwd 显示当前所在路径   mkdir dir_name 创建目录 mkdir -p a&#x2F;b&#x2F;c：递归创建多级目录   rmdir dir_name 删除空目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Aurora&#39;s Blog">
+<meta property="og:url" content="https://github.com/Aurora-tl/Aurora-tl.github.io/2025/11/05/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="Aurora&#39;s Blog">
+<meta property="og:description" content="Linux常用命令总结 🐧 常用 Linux 命令速查表  📁 一、文件与目录操作   命令 功能说明    ls 列出目录内容 ls -la：显示隐藏文件和详细信息   cd 切换目录 cd .. 返回上一级，cd ~ 回家目录   pwd 显示当前所在路径   mkdir dir_name 创建目录 mkdir -p a&#x2F;b&#x2F;c：递归创建多级目录   rmdir dir_name 删除空目">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/Aurora-tl/Aurora-tl.github.io/img/butterfly-icon.png">
+<meta property="article:published_time" content="2025-11-05T02:37:35.495Z">
+<meta property="article:modified_time" content="2025-11-21T06:58:11.251Z">
+<meta property="article:author" content="Aurora-tl">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/Aurora-tl/Aurora-tl.github.io/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "",
+  "url": "https://github.com/Aurora-tl/Aurora-tl.github.io/2025/11/05/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/",
+  "image": "https://github.com/Aurora-tl/Aurora-tl.github.io/img/butterfly-icon.png",
+  "datePublished": "2025-11-05T02:37:35.495Z",
+  "dateModified": "2025-11-21T06:58:11.251Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Aurora-tl",
+      "url": "https://github.com/Aurora-tl/Aurora-tl.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/Aurora-tl/Aurora-tl.github.io/img/favicon.png"><link rel="canonical" href="https://github.com/Aurora-tl/Aurora-tl.github.io/2025/11/05/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/Aurora-tl/Aurora-tl.github.io/css/index.css?v=5.5.2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/Aurora-tl/Aurora-tl.github.io/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Aurora\'s Blog',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.1"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/Aurora-tl/Aurora-tl.github.io/"><span class="site-name">Aurora's Blog</span></a><a class="nav-page-title" href="/Aurora-tl/Aurora-tl.github.io/"><span class="site-name">Aurora's Blog</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">无标题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-11-05T02:37:35.495Z" title="发表于 2025-11-05 10:37:35">2025-11-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-11-21T06:58:11.251Z" title="更新于 2025-11-21 14:58:11">2025-11-21</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="Linux常用命令总结"><a href="#Linux常用命令总结" class="headerlink" title="Linux常用命令总结"></a>Linux常用命令总结</h1><p> 🐧 常用 Linux 命令速查表</p>
+<hr>
+<h3 id="📁-一、文件与目录操作"><a href="#📁-一、文件与目录操作" class="headerlink" title="📁 一、文件与目录操作"></a>📁 一、文件与目录操作</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ls</code></td>
+<td>列出目录内容 <code>ls -la</code>：显示隐藏文件和详细信息</td>
+</tr>
+<tr>
+<td><code>cd</code></td>
+<td>切换目录 <code>cd ..</code> 返回上一级，<code>cd ~</code> 回家目录</td>
+</tr>
+<tr>
+<td><code>pwd</code></td>
+<td>显示当前所在路径</td>
+</tr>
+<tr>
+<td><code>mkdir dir_name</code></td>
+<td>创建目录 <code>mkdir -p a/b/c</code>：递归创建多级目录</td>
+</tr>
+<tr>
+<td><code>rmdir dir_name</code></td>
+<td>删除空目录</td>
+</tr>
+<tr>
+<td><code>rm file</code></td>
+<td>删除文件 <code>rm -rf dir</code>：<strong>危险！</strong> 强制递归删除目录及内容</td>
+</tr>
+<tr>
+<td><code>cp src dest</code></td>
+<td>复制文件&#x2F;目录 <code>cp -r dir1 dir2</code>：复制整个目录</td>
+</tr>
+<tr>
+<td><code>mv old new</code></td>
+<td>移动或重命名文件&#x2F;目录</td>
+</tr>
+<tr>
+<td><code>touch file.txt</code></td>
+<td>创建空文件或更新文件时间戳</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="🔍-二、文件查看与编辑"><a href="#🔍-二、文件查看与编辑" class="headerlink" title="🔍 二、文件查看与编辑"></a>🔍 二、文件查看与编辑</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>cat file</code></td>
+<td>查看文件全部内容</td>
+</tr>
+<tr>
+<td><code>less file</code></td>
+<td>分页查看文件（支持上下滚动，按 <code>q</code> 退出）</td>
+</tr>
+<tr>
+<td><code>head file</code></td>
+<td>查看文件前10行 <code>head -n 20 file</code>：查看前20行</td>
+</tr>
+<tr>
+<td><code>tail file</code></td>
+<td>查看文件后10行 <code>tail -f file</code>：<strong>实时追踪</strong>日志文件变化（非常常用！）</td>
+</tr>
+<tr>
+<td><code>grep &quot;keyword&quot; file</code></td>
+<td>在文件中搜索关键词 <code>grep -r &quot;error&quot; /var/log/</code>：递归搜索</td>
+</tr>
+<tr>
+<td><code>vim file</code> &#x2F; <code>nano file</code></td>
+<td>使用文本编辑器编辑文件（<code>vim</code> 功能强，<code>nano</code> 更简单）</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="⚙️-三、系统信息与进程管理"><a href="#⚙️-三、系统信息与进程管理" class="headerlink" title="⚙️ 三、系统信息与进程管理"></a>⚙️ 三、系统信息与进程管理</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>uname -a</code></td>
+<td>查看系统内核等基本信息</td>
+</tr>
+<tr>
+<td><code>df -h</code></td>
+<td>查看磁盘使用情况（<code>-h</code> 表示易读格式，如 GB、MB）</td>
+</tr>
+<tr>
+<td><code>free -h</code></td>
+<td>查看内存使用情况</td>
+</tr>
+<tr>
+<td><code>top</code></td>
+<td>实时查看系统进程、CPU、内存占用（按 <code>q</code> 退出）</td>
+</tr>
+<tr>
+<td><code>htop</code></td>
+<td>更美观的 <code>top</code>（需安装）</td>
+</tr>
+<tr>
+<td><code>ps aux</code></td>
+<td>查看所有进程快照 &#96;ps aux</td>
+</tr>
+<tr>
+<td><code>kill PID</code></td>
+<td>终止指定 PID 的进程 <code>kill -9 PID</code>：强制终止</td>
+</tr>
+<tr>
+<td><code>systemctl start/stop/status service</code></td>
+<td>管理系统服务（如 <code>systemctl status nginx</code>）</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="🌐-四、网络相关"><a href="#🌐-四、网络相关" class="headerlink" title="🌐 四、网络相关"></a>🌐 四、网络相关</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ip addr</code> 或 <code>ip a</code></td>
+<td>查看 IP 地址（取代旧的 <code>ifconfig</code>）</td>
+</tr>
+<tr>
+<td><code>ping google.com</code></td>
+<td>测试网络连通性</td>
+</tr>
+<tr>
+<td><code>netstat -tulnp</code></td>
+<td>查看端口监听和连接情况 常用于查服务端口（如 <code>grep 8080</code>）</td>
+</tr>
+<tr>
+<td><code>ss -tuln</code></td>
+<td><code>netstat</code> 的现代更快替代品</td>
+</tr>
+<tr>
+<td><code>lsof -i :8080</code></td>
+<td>查看哪个进程占用了 8080 端口</td>
+</tr>
+<tr>
+<td><code>curl http://example.com</code></td>
+<td>发送 HTTP 请求，测试 API 或下载内容</td>
+</tr>
+<tr>
+<td><code>wget url</code></td>
+<td>从网络下载文件</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="🔐-五、权限与用户"><a href="#🔐-五、权限与用户" class="headerlink" title="🔐 五、权限与用户"></a>🔐 五、权限与用户</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>chmod 755 file</code></td>
+<td>修改文件权限（<code>r=4, w=2, x=1</code>）</td>
+</tr>
+<tr>
+<td><code>chown user:group file</code></td>
+<td>修改文件所有者和所属组</td>
+</tr>
+<tr>
+<td><code>sudo command</code></td>
+<td>以管理员权限执行命令</td>
+</tr>
+<tr>
+<td><code>whoami</code></td>
+<td>查看当前用户名</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td>查看当前用户的 UID 和所属组</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="📦-六、压缩与解压"><a href="#📦-六、压缩与解压" class="headerlink" title="📦 六、压缩与解压"></a>📦 六、压缩与解压</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>tar -czvf archive.tar.gz dir/</code></td>
+<td>打包并压缩目录为 <code>.tar.gz</code></td>
+</tr>
+<tr>
+<td><code>tar -xzvf archive.tar.gz</code></td>
+<td>解压 <code>.tar.gz</code> 文件</td>
+</tr>
+<tr>
+<td><code>gzip file</code> &#x2F; <code>gunzip file.gz</code></td>
+<td>压缩&#x2F;解压 <code>.gz</code> 文件</td>
+</tr>
+<tr>
+<td><code>zip -r archive.zip dir/</code></td>
+<td>创建 <code>.zip</code> 压缩包</td>
+</tr>
+<tr>
+<td><code>unzip archive.zip</code></td>
+<td>解压 <code>.zip</code> 文件</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="🧩-七、其他实用技巧"><a href="#🧩-七、其他实用技巧" class="headerlink" title="🧩 七、其他实用技巧"></a>🧩 七、其他实用技巧</h3><table>
+<thead>
+<tr>
+<th>技巧</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>history</code></td>
+<td>查看命令历史记录</td>
+</tr>
+<tr>
+<td><code>!!</code></td>
+<td>重复执行上一条命令</td>
+</tr>
+<tr>
+<td><code>Ctrl + C</code></td>
+<td>终止当前运行的命令</td>
+</tr>
+<tr>
+<td><code>Ctrl + Z</code></td>
+<td>暂停当前命令（可用 <code>bg</code>&#x2F;<code>fg</code> 管理）</td>
+</tr>
+<tr>
+<td><code>Tab</code> 键</td>
+<td>命令或路径自动补全（超实用！）</td>
+</tr>
+<tr>
+<td>&#96;</td>
+<td>&#96; (管道)</td>
+</tr>
+<tr>
+<td><code>&gt;</code> 和 <code>&gt;&gt;</code></td>
+<td>重定向输出 <code>command &gt; file</code> 覆盖写入，<code>&gt;&gt;</code> 追加写入</td>
+</tr>
+</tbody></table>
+<p>Screen 相关命令总结</p>
+<p><code>screen</code> 是 Linux&#x2F;Unix 系统中一个非常实用的终端复用工具，允许用户在一个终端会话中创建多个窗口、后台运行任务，并在断开连接后重新连接继续工作（非常适合远程 SSH 会话）。以下是常用的 <code>screen</code> 命令总结：</p>
+<hr>
+<h3 id="一、基本使用"><a href="#一、基本使用" class="headerlink" title="一、基本使用"></a>一、基本使用</h3><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>启动 screen 会话</td>
+<td><code>screen</code></td>
+</tr>
+<tr>
+<td>启动并命名会话</td>
+<td><code>screen -S session_name</code></td>
+</tr>
+<tr>
+<td>列出所有 screen 会话</td>
+<td><code>screen -ls</code></td>
+</tr>
+<tr>
+<td>重新连接到会话</td>
+<td><code>screen -r session_name</code>（或 <code>screen -r PID</code>）</td>
+</tr>
+<tr>
+<td>连接到已附加的会话（强制分离）</td>
+<td><code>screen -d -r session_name</code></td>
+</tr>
+<tr>
+<td>退出当前 screen 会话（在 screen 内执行）</td>
+<td><code>exit</code> 或按 <code>Ctrl + D</code></td>
+</tr>
+<tr>
+<td>临时脱离（detach）当前会话（回到主终端）</td>
+<td><strong><code>Ctrl + A</code> 然后按 <code>D</code></strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>💡 提示：所有 screen 快捷键都以 <code>Ctrl + A</code> 为前缀（可自定义）。</p>
+</blockquote>
+<hr>
+<h3 id="二、常用快捷键（在-screen-会话中使用）"><a href="#二、常用快捷键（在-screen-会话中使用）" class="headerlink" title="二、常用快捷键（在 screen 会话中使用）"></a>二、常用快捷键（在 screen 会话中使用）</h3><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Ctrl + A</code> <code>C</code></td>
+<td>创建新窗口（window）</td>
+</tr>
+<tr>
+<td><code>Ctrl + A</code> <code>N</code></td>
+<td>切换到下一个窗口</td>
+</tr>
+<tr>
+<td><code>Ctrl + A</code> <code>P</code></td>
+<td>切换到上一个窗口</td>
+</tr>
+<tr>
+<td><code>Ctrl + A</code> <code>0</code>~&#96;9&#96;</td>
+<td>切换到指定编号的窗口（0-9）</td>
+</tr>
+<tr>
+<td><code>Ctrl + A</code> <code>&quot;</code></td>
+<td>列出所有窗口（可选择切换）</td>
+</tr>
+<tr>
+<td><code>Ctrl + A</code> <code>A</code></td>
+<td>重命名当前窗口</td>
+</tr>
+<tr>
+<td><code>Ctrl + A</code> <code>S</code></td>
+<td>水平分割窗口</td>
+</tr>
+<tr>
+<td><code>Ctrl + A</code> &#96;</td>
+<td>&#96;（竖线）</td>
+</tr>
+<tr>
+<td><code>Ctrl + A</code> <code>Tab</code></td>
+<td>在分割区域之间切换</td>
+</tr>
+<tr>
+<td><code>Ctrl + A</code> <code>X</code></td>
+<td>关闭当前区域（分割窗格）</td>
+</tr>
+<tr>
+<td><code>Ctrl + A</code> <code>[</code></td>
+<td>进入复制&#x2F;滚动模式（可用方向键上下查看历史）</td>
+</tr>
+<tr>
+<td><code>Ctrl + A</code> <code>]</code></td>
+<td>粘贴复制的内容</td>
+</tr>
+<tr>
+<td><code>Ctrl + A</code> <code>?</code></td>
+<td>查看所有快捷键帮助</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="三、高级用法"><a href="#三、高级用法" class="headerlink" title="三、高级用法"></a>三、高级用法</h3><ul>
+<li><p><strong>后台运行长期任务</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">screen -S myjob</span><br><span class="line"><span class="comment"># 运行你的命令，如：python train.py</span></span><br><span class="line"><span class="comment"># 按 Ctrl+A D 脱离，任务继续在后台运行</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>共享会话（多人协作）</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">screen -S shared_session -L  <span class="comment"># -L 启用日志记录（可选）</span></span><br><span class="line"><span class="comment"># 另一个用户执行：</span></span><br><span class="line">screen -x shared_session     <span class="comment"># 附加到同一个会话（实时共享）</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>启用日志记录</strong><br>在 screen 会话中按 <code>Ctrl + A</code> <code>H</code>：开始&#x2F;停止将当前窗口输出记录到 <code>screenlog.0</code> 文件。（间隔按，大写的H）</p>
+</li>
+<li><p><strong>自定义配置</strong><br>配置文件：<code>~/.screenrc</code><br>示例配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">startup_message off</span><br><span class="line">defscrollback 5000</span><br><span class="line">vbell off</span><br><span class="line">caption always &quot;%&#123;= kw&#125;%-w%&#123;= BW&#125;%n %t%&#123;-&#125;%+w&quot;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h3 id="四、常见问题"><a href="#四、常见问题" class="headerlink" title="四、常见问题"></a>四、常见问题</h3><ul>
+<li><p><strong>会话处于 Attached 状态无法连接？</strong><br>使用：<code>screen -d -r session_name</code> 先强制分离再连接。</p>
+</li>
+<li><p><strong>如何彻底杀死一个 screen 会话？</strong>  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">screen -S session_name -X quit</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>screen 未安装？</strong><br>Ubuntu&#x2F;Debian: <code>sudo apt install screen</code><br>CentOS&#x2F;RHEL: <code>sudo yum install screen</code> 或 <code>sudo dnf install screen</code></p>
+</li>
+</ul>
+<hr>
+<p><code>screen</code> 虽然较老，但稳定可靠；现代替代品如 <code>tmux</code> 功能更强大，但 <code>screen</code> 仍广泛用于生产环境，尤其在资源受限或老旧系统中。掌握它对远程运维非常有帮助！</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://github.com/Aurora-tl/Aurora-tl.github.io">Aurora-tl</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://github.com/Aurora-tl/Aurora-tl.github.io/2025/11/05/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/">https://github.com/Aurora-tl/Aurora-tl.github.io/2025/11/05/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://github.com/Aurora-tl/Aurora-tl.github.io" target="_blank">Aurora's Blog</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/Aurora-tl/Aurora-tl.github.io/img/butterfly-icon.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/Aurora-tl/Aurora-tl.github.io/2025/11/20/hello-world/" title="Hello World"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">Hello World</div></div><div class="info-2"><div class="info-item-1">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;  More info: Writing Run server1$ hexo server  More info: Server Generate static files1$ hexo generate  More info: Generating Deploy to remote sites1$ hexo deploy  More info: Deployment </div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/Aurora-tl/Aurora-tl.github.io/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/Aurora-tl/Aurora-tl.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Aurora-tl</div><div class="author-info-description"></div><div class="site-data"><a href="/Aurora-tl/Aurora-tl.github.io/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/Aurora-tl/Aurora-tl.github.io/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/Aurora-tl/Aurora-tl.github.io/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93"><span class="toc-number">1.</span> <span class="toc-text">Linux常用命令总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%81-%E4%B8%80%E3%80%81%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C"><span class="toc-number">1.1.</span> <span class="toc-text">📁 一、文件与目录操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%8D-%E4%BA%8C%E3%80%81%E6%96%87%E4%BB%B6%E6%9F%A5%E7%9C%8B%E4%B8%8E%E7%BC%96%E8%BE%91"><span class="toc-number">1.2.</span> <span class="toc-text">🔍 二、文件查看与编辑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9A%99%EF%B8%8F-%E4%B8%89%E3%80%81%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF%E4%B8%8E%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86"><span class="toc-number">1.3.</span> <span class="toc-text">⚙️ 三、系统信息与进程管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%8C%90-%E5%9B%9B%E3%80%81%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3"><span class="toc-number">1.4.</span> <span class="toc-text">🌐 四、网络相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%90-%E4%BA%94%E3%80%81%E6%9D%83%E9%99%90%E4%B8%8E%E7%94%A8%E6%88%B7"><span class="toc-number">1.5.</span> <span class="toc-text">🔐 五、权限与用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%A6-%E5%85%AD%E3%80%81%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B"><span class="toc-number">1.6.</span> <span class="toc-text">📦 六、压缩与解压</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A7%A9-%E4%B8%83%E3%80%81%E5%85%B6%E4%BB%96%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7"><span class="toc-number">1.7.</span> <span class="toc-text">🧩 七、其他实用技巧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-number">1.8.</span> <span class="toc-text">一、基本使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%EF%BC%88%E5%9C%A8-screen-%E4%BC%9A%E8%AF%9D%E4%B8%AD%E4%BD%BF%E7%94%A8%EF%BC%89"><span class="toc-number">1.9.</span> <span class="toc-text">二、常用快捷键（在 screen 会话中使用）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95"><span class="toc-number">1.10.</span> <span class="toc-text">三、高级用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-number">1.11.</span> <span class="toc-text">四、常见问题</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/Aurora-tl/Aurora-tl.github.io/2025/11/20/hello-world/" title="Hello World">Hello World</a><time datetime="2025-11-20T06:49:46.454Z" title="发表于 2025-11-20 14:49:46">2025-11-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/Aurora-tl/Aurora-tl.github.io/2025/11/05/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/" title="无标题">无标题</a><time datetime="2025-11-05T02:37:35.495Z" title="发表于 2025-11-05 10:37:35">2025-11-05</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By Aurora-tl</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.2</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/Aurora-tl/Aurora-tl.github.io/js/utils.js?v=5.5.2"></script><script src="/Aurora-tl/Aurora-tl.github.io/js/main.js?v=5.5.2"></script><div class="js-pjax"></div><script async data-pjax src="/Aurora-tl/Aurora-tl.github.io/"></script></div></body></html>
